@@ -65,3 +65,21 @@ html {
     background-color:#484848;
     cursor: pointer;
 }
+
+#SideBar {
+
+}
+
+#SideBar li {
+    list-style: none;
+    background-color: #686868;
+    padding: 11px 24px;
+    border-bottom: thin solid #7c7c7c;
+    border-left: thin outset #737373;
+    border-bottom: thin inset #5d5d5d;
+}
+
+#Sidebar li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
