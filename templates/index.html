@@ -1,0 +1,17 @@
+    {% include 'header.html' %}
+{% include 'menu.html' %}
+
+<div id="BodyDiv">
+	<div id="MessageContainer">
+        Message Manager
+	</div>
+	<div id="MainMenuDiv">
+		{% include 'sidebar.html' %}
+	</div>
+	<div id="ContentDiv">
+		{% block content %}
+		{% endblock %}
+	</div>
+</div>
+
+{% include 'footer.html' %}

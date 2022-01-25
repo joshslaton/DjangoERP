@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+*, ::after, ::before {
+	font-family: "Montserrat", san-serif;
+}
+
+.testimonial-grid {
+	display: grid;
+	padding-block: 2rem;
+	width: min(95%, 70rem);
+	margin-inline: auto;
+	gap: 1.5rem;
+	grid-template-columns: repeat(3, 1fr)
+}
+
+.testimonial:last-child {
+	grid-column-start: 2;
+	grid-column-end: 4;
+}
+
+.testimonial {
+	background-color: #d0d0d0;
+	padding: 2rem;
+	border-radius: 0.5rem;
+}
+
