@@ -1,9 +1,10 @@
+{% load static %}
 <header id="HeaderContainer">
-	<div id="HeaderInfo">
-		<div id="HeaderInfoCompany">Lorma Colleges</div>
-		<div id="HeaderInfoUser">Demonstration User</div>
-		<div id="HeaderInfoModule">Module Info</div>
-	</div>
+    <div id="HeaderInfo">
+        <div id="HeaderLogo">
+            <img src="{% static './media/lorma-logo.png' %}">
+        </div>
+    </div>
 	<nav id="HeaderMenu">
 		<ul id="Menu">
 			<li><a href="#">Main Menu</a></li>
