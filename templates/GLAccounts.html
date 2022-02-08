@@ -1,0 +1,76 @@
+{% extends 'base-nosidebar.html' %}
+
+{% block content %}
+{{ html }}
+<div class="flex-column">
+    <h3>Title: {{ page.modulename }}</h3>
+    <table>
+        <tr>
+            <th>Group Name</th>
+            <th>Section</th>
+            <th>Sequence in TB</th>
+            <th>Profit and Loss</th>
+            <th>Parent Group</th>
+            <th colspan="2"></th>
+        </tr>
+        <tr>
+            <td>row</td>
+            <td>row</td>
+            <td>row</td>
+            <td>row</td>
+            <td>row</td>
+            <td>row</td>
+            <td>row</td>
+        </tr>
+    </table>
+
+    <form action="#" method="post">
+        <table>
+            <thead>
+                <th colspan="2">New Account Group Details</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Account Group Name</td>
+                    <td><input type="text" name="accountgroupname" placeholder="Enter the group name"/></td>
+                </tr>
+                <tr>
+                    <td>Parent Group Name??</td>
+                    <td>
+                        <select>
+                            <option>Empty</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Section in Accounts</td>
+                    <td>
+                        <select>
+                            <option>Empty</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Financial Statement Item</td>
+                    <td>
+                        <select name="fsitem">
+                            <option value="financialposition">Financial Performance</option>
+                            <option value="financialperformance">Financial Position</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sequence in TB</td>
+                    <td><input type="Number"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" value="insert">Insert</button>
+                        <button>Return</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+{% endblock content %}

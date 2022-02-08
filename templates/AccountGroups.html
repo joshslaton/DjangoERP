@@ -1,0 +1,59 @@
+{% extends 'base-nosidebar.html' %}
+
+{% block content %}
+<div class="flex-column">
+    <h3>{{ page.modulename }}</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Group Name</th>
+                <!-- <th>Section</th> -->
+                <th>Sequence/Order</th>
+                <th>Financial Statement Item</th>
+                <!-- <th>Parent Group</th> -->
+                <th colspan="2">Controls</th>
+            </tr>
+        </thead>
+        {% for ag in accountgroups %}
+        <tbody>
+            <tr>
+                <td>{{ ag.accountgroupname}}</td>
+                <!-- <td>row</td> -->
+                <td>{{ ag.sequenceinfs}}</td>
+                <td>{{ ag.fsitem }}</td>
+                <!-- <td>row</td> -->
+                <td><a href="{{ page.url }}?EditAccountGroup={{ ag.accountgroupname }}">Edit</a></td>
+                <td><a href="{{ page.url }}?Delete={{ ag.accountgroupname }}">Edit</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+    <form action="{{ page.url }}" method="post">
+        {% csrf_token %}
+        <table class="">
+            <thead>
+                <th colspan="2">New Account Group Details</th>
+            </thead>
+            <tbody>
+                {% for f in form %}
+                <tr>
+                    <td>
+                        <label>{{ f.label }}</label>
+                    </td>
+                    <td>
+                        {{ f }}
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2">
+                        <button class="btn btn-primary" type="submit" value="insert">Insert</button>
+                        <button class="btn btn-primary">Return</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+{% endblock content %}

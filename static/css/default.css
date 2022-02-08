@@ -1,9 +1,21 @@
-import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@font-face {
+    font-family: Montserrat;
+    src: url('../fonts/Montserrat/Montserrat-Regular.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url('../fonts/Montserrat/Montserrat-Bold.ttf') format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
 
  *, ::after, ::before {
-	box-sizing: inherit;
 	font-family: "Montserrat", san-serif;
-	font-size: 10pt;
+	box-sizing: inherit;
+	/* font-size: 10pt; */
 }
 
 html {
@@ -11,6 +23,24 @@ html {
     min-width: 768px;
 }
 
+/* classes */
+.MenuGroupHeader {
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: var(--border-size-1) solid black;
+}
+
+.flex-column {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.flex-column > * {
+    flex: 0 0 auto;
+    align-self: center;
+}
+/* ids */
 #HeaderContainer {
     display: flex;
     flex-flow: column nowrap;
@@ -56,7 +86,7 @@ html {
 }
 
 #Menu li:hover {
-    background-color:#484848;
+    background-color:#333333;
     cursor: pointer;
 }
 
@@ -66,21 +96,35 @@ html {
     flex-flow: row wrap;
 }
 
+/* MessageManager */
 #MessageContainer {
     flex: 1 1 100%;
     text-align: center;
     margin: 10px;
 }
 
+.info {
+
+}
+
+.success {
+    padding: var(--size-2);
+    font-size: var(--font-size-3);
+    color: var(--gray-0);
+    background-color: var(--green-4);
+    border: var(--border-size-2) solid var(--green-5);
+    border-radius: var(--radius-2)
+}
+
 /* Sidebar */
 #MainMenuDiv {
     flex: 0 0 max-content;
 }
-
+c
 #Sidebar {
     list-style-type: none;
-    padding: 0; 
-    margin-left: 10px;
+    padding: 0;
+    margin: 0;
 }
 
 #Sidebar li {
@@ -95,7 +139,7 @@ html {
 
 
 #Sidebar li:hover {
-    background-color:#484848;
+    background-color:#333333;
     cursor: pointer;
 }
 
@@ -105,8 +149,33 @@ html {
     font-weight: bold;
 }
 
+#ContentDivWrapper {
+    flex: 1 0 100%;
+}
+
+#ContentDivWrapper > * {
+    /* flex: 1 0 auto; */
+}
+
 #ContentDiv {
-    outline: solid 1px black;
+    /* display: flex;
+    flex-flow: row nowrap; */
     margin: 0 10px 10px 10px;
-    flex: 1 0 auto;
+}
+
+#ContentDiv > * {
+    /* flex: 1 0 auto; */
+}
+
+#Card {
+}
+
+#Card ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#Card ul li a {
+    text-decoration: none;
 }
