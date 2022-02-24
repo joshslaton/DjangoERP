@@ -14,16 +14,16 @@
                 <th colspan="2">Controls</th>
             </tr>
         </thead>
-        {% for ag in object_list %}
+        {% for ag in accountgroups %}
         <tbody>
             <tr>
-                <td>{{ ag.accountgroupname}}</td>
+                <td>{{ ag.accountgroupname }}</td>
                 <!-- <td>row</td> -->
-                <td>{{ ag.sequenceinfs}}</td>
+                <td>{{ ag.sequenceinfs }}</td>
                 <td>{{ ag.fsitem }}</td>
                 <!-- <td>row</td> -->
                 <td><a href="{{ page.url }}?EditAccountGroup={{ ag.accountgroupname }}">Edit</a></td>
-                <td><a href="{{ page.url }}?Delete={{ ag.accountgroupname }}">Delete</a></td>
+                <td><a href="{{ page.url }}/Delete/{{ ag.accountgroupname }}">Delete</a></td>
             </tr>
         </tbody>
         {% endfor %}

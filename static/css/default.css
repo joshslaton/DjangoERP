@@ -15,7 +15,7 @@
  *, ::after, ::before {
 	font-family: "Montserrat", san-serif;
 	box-sizing: inherit;
-	/* font-size: 10pt; */
+	font-size: 10pt;
 }
 
 html {
@@ -120,7 +120,7 @@ html {
 #MainMenuDiv {
     flex: 0 0 max-content;
 }
-c
+
 #Sidebar {
     list-style-type: none;
     padding: 0;
@@ -150,21 +150,17 @@ c
 }
 
 #ContentDivWrapper {
-    flex: 1 0 100%;
-}
-
-#ContentDivWrapper > * {
-    /* flex: 1 0 auto; */
+    flex: 1 0 max-content;
 }
 
 #ContentDiv {
-    /* display: flex;
-    flex-flow: row nowrap; */
+    display: flex;
+    flex-flow: row nowrap;
     margin: 0 10px 10px 10px;
 }
 
 #ContentDiv > * {
-    /* flex: 1 0 auto; */
+    flex: 1 0 max-content;
 }
 
 #Card {

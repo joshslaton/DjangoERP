@@ -27,7 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+INTERNAL_IPS = [
+    '0.0.0.0',
+    '127.0.0.1',
+    '192.168.96.129'
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,10 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'applications.commons'
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,7 +63,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'DIRS': [ os.path.join(BASE_DIR) ],
         'DIRS': [ os.path.join(BASE_DIR, 'templates') ],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'debug': True,
             'context_processors': [

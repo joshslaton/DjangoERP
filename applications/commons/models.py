@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class AccountGroupsModel(models.Model):
     accountgroupname = models.CharField(
@@ -33,3 +34,6 @@ class AccountGroupsModel(models.Model):
 
     def publish(self):
         self.save()
+
+    def get_absolute_url(self):
+        return reverse('accountgroups-create')
