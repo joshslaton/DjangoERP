@@ -30,10 +30,16 @@ class GeneralLedger(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'GeneralLedger.html')
 
-class AccountGroupsCreate(CreateView, ListView):
+class AccountGroupsCreate(CreateView):
     template_name = 'AccountGroupsCreate.html'
     model = AccountGroupsModel
-    fields = '__all__'
+    form_class = AccountGroupsForm
+
+    def get_initial(self):
+        return {
+            'accountgroupname': 'Assets',
+            'sequenceinfs': '1000'
+        }
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -44,14 +50,19 @@ class AccountGroupsCreate(CreateView, ListView):
         context['accountgroups'] = AccountGroupsModel.objects.all()
         return context
 
-    def form_valid(self, form):
-        super().form_valid(form)
-        form.save()
-        return reverse_lazy('accountgroups-create')
-
-
 class AccountGroupsUpdate(UpdateView):
     model = AccountGroupsModel
+    fields = '__all__'
+    template_name = 'AccountGroupsUpdate.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page'] = {
+            'modulename': 'Update Account Groups',
+            # 'url': host + 'GeneralLedger/AccountGroups/'
+        }
+        # context['accountgroups'] = AccountGroupsModel.objects.all()
+        return context
 
 class AccountGroupsDelete(DeleteView):
     model = AccountGroupsModel
@@ -60,5 +71,4 @@ class AccountGroupsDelete(DeleteView):
 
     # Understand this
     def get(self, *args, **kwargs):
-        print(dir(self))
         return self.delete(*args, **kwargs)

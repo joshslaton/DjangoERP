@@ -1,0 +1,38 @@
+{% extends 'base-nosidebar.html' %}
+
+{% block content %}
+{% for key, value in form.errors.items %}
+<div id="MessageContainer" class="alert alert-danger">
+    {{ key }}{{ value }}
+</div>
+{% endfor %}
+<div class="flex-column">
+    <h3>{{ page.modulename }}</h3>
+    <form action="{{ page.url }}" method="post">
+        {% csrf_token %}
+        <table class='table table-bordered'>
+            <thead>
+                <th colspan="2">Update Account Group Details</th>
+            </thead>
+            <tbody>
+                {% for f in form %}
+                <tr>
+                    <td>
+                        <label>{{ f.label }}</label>
+                    </td>
+                    <td>
+                        {{ f }}
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2">
+                        <button class="btn btn-primary" type="submit" value="update">Update</button>
+                        <button class="btn btn-primary">Return</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+{% endblock content %}

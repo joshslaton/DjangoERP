@@ -1,9 +1,14 @@
 {% extends 'base-nosidebar.html' %}
 
 {% block content %}
+{% for key, value in form.errors.items %}
+<div id="MessageContainer" class="alert alert-danger">
+    {{ key }}{{ value }}
+</div>
+{% endfor %}
 <div class="flex-column">
     <h3>{{ page.modulename }}</h3>
-    <table>
+    <table class='table table-bordered table-nonfluid'>
         <thead>
             <tr>
                 <th>Group Name</th>
@@ -22,8 +27,8 @@
                 <td>{{ ag.sequenceinfs }}</td>
                 <td>{{ ag.fsitem }}</td>
                 <!-- <td>row</td> -->
-                <td><a href="{{ page.url }}?EditAccountGroup={{ ag.accountgroupname }}">Edit</a></td>
-                <td><a href="{{ page.url }}/Delete/{{ ag.accountgroupname }}">Delete</a></td>
+                <td><a href="{{ page.url }}Edit/{{ ag.accountgroupname }}">Edit</a></td>
+                <td><a href="{{ page.url }}Delete/{{ ag.accountgroupname }}">Delete</a></td>
             </tr>
         </tbody>
         {% endfor %}
@@ -31,7 +36,7 @@
 
     <form action="{{ page.url }}" method="post">
         {% csrf_token %}
-        <table class="">
+        <table class='table table-bordered'>
             <thead>
                 <th colspan="2">New Account Group Details</th>
             </thead>

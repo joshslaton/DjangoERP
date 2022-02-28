@@ -40,6 +40,11 @@ html {
     flex: 0 0 auto;
     align-self: center;
 }
+
+.table-nonfluid {
+    width: auto !important;
+}
+
 /* ids */
 #HeaderContainer {
     display: flex;
@@ -101,6 +106,10 @@ html {
     flex: 1 1 100%;
     text-align: center;
     margin: 10px;
+}
+
+#MessageContainer ul {
+    margin: 0;
 }
 
 .info {
