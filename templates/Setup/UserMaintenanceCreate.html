@@ -1,0 +1,70 @@
+{% extends 'base-nosidebar.html' %}
+
+{% block content %}
+{% for key, value in form.errors.items %}
+<div id="MessageContainer" class="alert alert-danger">
+    {{ key }}{{ value }}
+</div>
+{% endfor %}
+<div class="flex-column">
+    <h3>{{ page.modulename }}</h3>
+    <table class='table table-bordered table-nonfluid'>
+        <thead>
+            <tr>
+                <th>User Number</th>
+                <th>User ID/Login</th>
+                <th>Real Name</th>
+                <th>Phone</th>
+                <th>Email Address</th>
+                <th>Supplier ID</th>
+                <th>Customer ID</th>
+                <th>Is Blocked?</th>
+                <th colspan="2">Controls</th>
+            </tr>
+        </thead>
+        {% for u in www_users %}
+        <tbody>
+            <tr>
+                <td>000-000-000</td>
+                <td>{{ u.userid }}</td>
+                <td>{{ u.realname }}</td>
+                <td>{{ u.phone }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.supplierid }}</td>
+                <td>{{ u.customerid }}</td>
+                <td>{{ u.blocked }}</td>
+                <td><a href="{{ page.url }}Edit/{{ ag.accountgroupname }}">Edit</a></td>
+                <td><a href="{{ page.url }}Delete/{{ ag.accountgroupname }}">Delete</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+    <form action="{{ page.url }}" method="post">
+        {% csrf_token %}
+        <table class='table table-bordered'>
+            <thead>
+                <th colspan="2">New User Details</th>
+            </thead>
+            <tbody>
+                {% for f in form %}
+                <tr>
+                    <td>
+                        <label>{{ f.label }}</label>
+                    </td>
+                    <td>
+                        {{ f }}
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2">
+                        <button class="btn btn-primary" type="submit" value="insert">Insert</button>
+                        <button class="btn btn-primary">Return</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+{% endblock content %}

@@ -15,17 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views
-from ..applicatons.commons import views
 import debug_toolbar
 
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
     path('admin/', admin.site.urls),
-    path('', views.index),
-
-    path('GeneralLedger/', views.GeneralLedger.as_view()),
-    # path('Setup/', ),
-    # path('GeneralLedger/', include('applications.commons.urls')),
-    # path('Setup/', include('applications.commons.urls')),
+    path('', include('applications.commons.urls')),
 ]

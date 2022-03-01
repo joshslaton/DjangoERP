@@ -1,24 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-
-""" Custom Field Types """
-# Char
-
-class CustomCharField(models.Field):
-    description = 'MySQL char (not varchar)'
-    def __init__(self, fixed_length=1, *args, **kwargs):
-        self.fixed_length = fixed_length
-        super().__init__(*args, **kwargs)
-
-    def db_type(self, connection):
-        return 'char(%s)' % self.fixed_length
-
-    def deconstruct(self):
-        name, path, args, kwargs = super().deconstruct()
-        kwargs['fixed_length'] = self.fixed_length
-        return name, path, args, kwargs
-
 """ Regular Field Types """
 class AccountGroupsModel(models.Model):
     accountgroupname = models.CharField(
@@ -67,29 +49,3 @@ class ChartmasterModel(models.Model):
 
     def __str__(self):
         return self.accountname
-
-class www_users(models.Model):
-    userid = models.CharField(max_length=20, primary_key=True)
-    password = models.TextField()
-    realname = models.CharField(max_length=35)
-    customerid = models.CharField(max_length=10)
-    supplierid = models.CharField(max_length=10)
-    salesman = CustomCharField()
-    phone = models.CharField(max_length=30)
-    email = models.CharField(max_length=55, null=True)
-    # defaultlocation
-    # fullaccess
-    # cancreatetender
-    # lastvisitdate
-    # branchcode
-    # pagesize
-    # modulesallowed
-    # showdashboard
-    showpagehelp = models.BooleanField()
-    showfieldhelp = models.BooleanField()
-    blocked = models.BooleanField()
-    # displayrecordsmax
-    # theme
-    # language
-    # pdflanguage
-    # department
